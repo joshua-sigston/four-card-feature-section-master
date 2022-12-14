@@ -1,0 +1,272 @@
+* reset and custom style classes */
+/*
+1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*
+2. Remove default margin
+*/
+* {
+    margin: 0;
+}
+/*
+3. Allow percentage-based heights in the application
+*/
+html, body {
+    min-height: 100%;
+    font-size: 15px;
+    font-family: var(--ff-base);
+}
+/*
+Typographic tweaks!
+4. Add accessible line-height
+5. Improve text rendering
+*/
+body {
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--ff-base);
+}
+/*
+6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+/*
+7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+    font: inherit;
+}
+/*
+8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+/*
+9. Create a root stacking context
+*/
+#root, #__next {
+    isolation: isolate;
+}
+
+
+/* Root Styles */
+:root {
+    /* primary */
+    --clr-red: hsl(0, 78%, 62%);
+    --clr-cyan: hsl(180, 62%, 55%);
+    --clr-orange: hsl(34, 97%, 64%);
+    --clr-blue: hsl(212, 86%, 64%);
+
+    /* neutral */
+    --clr-vry-drk-blu: hsl(234, 12%, 34%);
+    --clr-gry-blu: hsl(229, 6%, 66%);
+    --clr-lght-gry: hsl(0, 0%, 98%);
+
+    --ff-base: 'Poppins', sans-serif;
+
+    --transition: 300ms ease-in-out;
+    
+    --fw-lght: 200;
+    --fw-reg: 400;
+    --fw-semi-bold: 600;
+}
+
+/* general styles */
+
+.grid {
+    display: grid;
+}
+
+.flex_row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.center_by_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_by_grid {
+    display: grid;
+    place-content: center;
+}
+
+.inactive {
+    display: none;
+}
+
+.opacity {
+    opacity: 1;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* body */
+body {
+    min-height: 100vh;
+    padding: 2em;
+    background-color: white;
+}
+
+/* main */
+main {
+    gap: 2em;
+}
+
+/* header */
+header {
+    justify-content: center;
+    align-items: center;
+
+    gap: 1em;
+}
+
+.line_one {
+    font-weight: var(--fw-lght);
+    color: var(--clr-gry-blu);
+}
+
+.line_two {
+    color: var(--clr-vry-drk-blu);
+}
+
+header p {
+    text-align: center;
+    color: var(--clr-gry-blu);
+}
+
+/* cards container */
+.cards_container {
+    margin-top: 3em;
+    gap: 2em;
+}
+
+/* middle container */
+.middle_container {
+    gap: 2em;
+    width: 100%;
+}
+
+/* card */
+.card {
+    border-radius: .5rem;
+    overflow: hidden;
+    gap: 1em;
+    background-color: var(--clr-lght-gry);
+    
+
+    box-shadow: 2px 12px 16px 2px rgb(187, 194, 224);
+    -webkit-box-shadow: 2px 12px 16px 2px rgb(187, 194, 224);
+    -moz-box-shadow: 2px 12px 16px 2px rgb(187, 194, 224);
+}
+
+.top_color {
+    height: .25rem;
+    width: 100%;
+}
+
+.supervisor .top_color {
+    background-color: var(--clr-cyan);
+}
+
+.team_builder .top_color {
+    background-color: var(--clr-red);
+}
+
+.karma .top_color {
+    background-color: var(--clr-orange);
+}
+
+.calculator .top_color {
+    background-color: var(--clr-blue);
+}
+
+.content_container {
+   padding: 0 2em 2em;
+   gap: 2em;
+}
+
+.definition {
+    color: var(--clr-gry-blu);
+}
+
+.img_container {
+    justify-content: flex-end;
+}
+
+/* responsiveness */
+
+@media screen and (min-width: 768px) {
+
+    main {
+        min-height: 80vh;
+        gap: 0;
+    }
+
+    header p {
+        width: 37%;
+    }
+
+    .card {
+        max-width: 25rem;
+    }
+
+    .cards_container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .supervisor {
+        grid-column: 0 / 1;
+    }
+
+    .team_builder {
+        grid-column: 2 / 3;
+        
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .cards_container {
+       grid-template-columns: repeat(3, 1fr);
+       grid-template-rows: 100%;
+       place-content: center;
+    }
+
+    .supervisor {
+        align-self: center;
+    }
+
+    .team_builder {
+        align-self: flex-start;
+    }
+
+    .karma {
+        grid-column: 2 / 3;
+        align-self: flex-end;
+    }
+
+    .calculator {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+        align-self: center;
+    }
+}
